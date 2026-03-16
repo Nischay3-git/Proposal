@@ -232,9 +232,6 @@ function launchBurst(){
   setTimeout(()=>p.remove(),2200);
  }
 }
-
-let noAttempts = 0;
-
 function moveNo(btn){
   const range = 200;
   const offsetX = (Math.random()*range) - range/2;
@@ -244,20 +241,6 @@ function moveNo(btn){
   btn.style.left = offsetX + "px";
   btn.style.top = offsetY + "px";
 }
-
- if(noAttempts < 5){
-     alert("Negative answers are currently unavailable 🥺💖");
-   }
- } else {
-   alert("System override activated. Switching to YES mode 💖");
-
-   if(q5Visible && yesBtn){
-     yesBtn.style.transform = "scale(1.4)";
-     yesBtn.style.boxShadow = "0 0 20px rgba(255,0,120,0.8)";
-   }
- }
-}
-
 /* floating hearts */
 setInterval(()=>{
  const heart=document.createElement("div");
