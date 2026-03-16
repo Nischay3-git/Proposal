@@ -147,32 +147,32 @@ Nobody is stealing you from me... because YOU ARE MY WI-FI 💖
 <div id="q1" class="hidden">
 <p>Question 1: Do you like me a little? 🥺</p>
 <button onclick="next(2)">Yes 🙂</button>
-<button onclick="handleNo(this)">No 🙃</button>
+<button onclick="moveNo(this)">No 🙃</button>
 </div>
 
 <div id="q2" class="hidden">
 <p>Question 2: Do I make you smile sometimes? 😊</p>
 <button onclick="next(3)">Yes 😁</button>
-<button onclick="handleNo(this)">Not really 😶</button>
+<button onclick="moveNo(this)">Not really 😶</button>
 </div>
 
 <div id="q3" class="hidden">
 <p>Question 3: Would life be a little boring without me? 😌</p>
 <button onclick="next(4)">Yes 😭</button>
-<button onclick="handleNo(this)">Nope 😌</button>
+<button onclick="moveNo(this)">Nope 😌</button>
 </div>
 
 <div id="q4" class="hidden">
 <p>Question 4: Will you give me 12 babies? 🥺💖</p>
 <button onclick="next(5)">Maybe… okay yes 😳</button>
-<button onclick="handleNo(this)">No 😒</button>
+<button onclick="moveNo(this)">No 😒</button>
 </div>
 
 <div id="q5" class="hidden">
 <p>Final Question 💍</p>
 <p>Will you be my wifu still for 110 yrs? 🥺💖</p>
 <button id="yesBtn" onclick="yesAnswer()">YESSSS 💕</button>
-<button onclick="handleNo(this)">No 🙈</button>
+<button onclick="moveNo(this)">No 🙈</button>
 </div>
 
 <p id="result" class="hidden"></p>
@@ -235,32 +235,15 @@ function launchBurst(){
 
 let noAttempts = 0;
 
-function handleNo(btn){
+function moveNo(btn){
+  const range = 200;
+  const offsetX = (Math.random()*range) - range/2;
+  const offsetY = (Math.random()*range) - range/2;
 
- noAttempts++;
-
- btn.classList.add("shake");
- setTimeout(()=>btn.classList.remove("shake"),400);
-
- const range = 200;
- const offsetX = (Math.random()*range) - range/2;
- const offsetY = (Math.random()*range) - range/2;
-
- btn.style.position="relative";
- btn.style.left = offsetX + "px";
- btn.style.top = offsetY + "px";
-
- const yesBtn = document.getElementById("yesBtn");
- const q5 = document.getElementById("q5");
-
- const q5Visible = q5 && q5.style.display === "block";
-
- if(q5Visible && yesBtn){
-   const scale = yesBtn.dataset.scale ? parseFloat(yesBtn.dataset.scale) : 1;
-   const newScale = scale + 0.05;
-   yesBtn.dataset.scale = newScale;
-   yesBtn.style.transform = `scale(${newScale})`;
- }
+  btn.style.position="relative";
+  btn.style.left = offsetX + "px";
+  btn.style.top = offsetY + "px";
+}
 
  if(noAttempts < 5){
      alert("Negative answers are currently unavailable 🥺💖");
